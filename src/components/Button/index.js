@@ -7,9 +7,9 @@ import ContainerButton from './style';
 /**
  * Componente de botão padrão
  */
-const Button = ({ label, color, clickable, handleClick }) => {
+const Button = ({ label, color, mode, clickable, handleClick }) => {
     return (
-        <ThemeProvider theme={{color}}>
+        <ThemeProvider theme={{color, mode}}>
             <ContainerButton clickable={clickable} onClick={handleClick}>{label}</ContainerButton>
         </ThemeProvider>
     );
@@ -24,7 +24,13 @@ Button.propTypes = {
      * Eschema de cores que será utilizado
      */
     color: PropTypes.oneOf([
-        'dark', 'light', 'danger', 'warning', 'primary', 'neutral', 'success', 'information'
+        'dark', 'danger', 'warning', 'primary', 'neutral', 'success', 'information'
+    ]),
+    /**
+     * Tipo de botão, variação de modelos
+     */
+    mode: PropTypes.oneOf([
+        'default', 'outlined'
     ]),
     /**
      * Indicador se o botão possui interação, usado para aplicar o efeito
@@ -39,6 +45,7 @@ Button.propTypes = {
 
 Button.defaultProps = {
     color: 'success',
+    mode: 'default',
     clickable: false,
 };
 

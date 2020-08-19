@@ -1,10 +1,10 @@
+import { css } from 'styled-components';
 import theme from 'styled-theming';
 
 import COLORS from 'constants/colors';
 
 export const colorOptions = [
     'dark',
-    'light',
     'danger',
     'warning',
     'primary',
@@ -13,9 +13,10 @@ export const colorOptions = [
     'information',
 ];
 
-export const primaryColor = theme('color',
-{
-    light: COLORS.light,
+/**
+ * Cores primárias
+ */
+const primaryColorScheme = {
     dark: COLORS.dark,
     danger: COLORS.danger,
     primary: COLORS.primary,
@@ -23,16 +24,35 @@ export const primaryColor = theme('color',
     success: COLORS.success,
     warning: COLORS.warning,
     information: COLORS.information,
-});
+};
+export const primaryColor = theme('color', primaryColorScheme);
 
-export const highlightColor = theme('color',
-{
+/**
+ * Cor de destaque para o botão
+ */
+const highlightColorScheme = {
     dark: COLORS.light,
-    light: COLORS.dark,
     danger: COLORS.light,
     warning: COLORS.dark,
     neutral: COLORS.dark,
     primary: COLORS.light,
     success: COLORS.light,
     information: COLORS.light,
+};
+export const highlightColor = theme('color', highlightColorScheme);
+
+/**
+ * Modelos de botão
+ */
+export const mode = theme('mode', {
+    default: css`
+        border: 0;
+    `,
+    outlined: (props) => css`
+        border-width: 1px;
+        border-style: solid;
+        color: ${primaryColorScheme[props.theme.color]};
+        background: ${COLORS.light};
+        border-color: ${primaryColorScheme[props.theme.color]};
+    `
 });

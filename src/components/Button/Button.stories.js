@@ -33,11 +33,28 @@ clickable.parameters = {
   },
 };
 
+export const outlined = Template.bind({});
+outlined.args = {
+  label: 'Outlined Button',
+  mode: 'outlined'
+};
+outlined.parameters = {
+  docs: {
+    description: {
+      story: `Exemplo de uso de botão no modelo outlined`
+    }
+  },
+};
+
 export const allColorSchemes = () => {
   return (
     <div>
       {colorOptions.map((colorOption) => (
-        <Button color={colorOption} label={`Color: ${colorOption}`} clickable />
+        <Button
+          color={colorOption}
+          label={`Color: ${colorOption}`}
+          clickable
+        />
       ))}
     </div>
   );
@@ -48,6 +65,29 @@ allColorSchemes.parameters = {
       story: `Exemplos com todos as cores de botões disponíveis para serem utilizadas,
               a label corresponde com o valor a ser informado na propriedade color
               para o usso desta opção
+      `
+    }
+  },
+};
+
+export const allOutlinedColorSchemes = () => {
+  return (
+    <div>
+      {colorOptions.map((colorOption) => (
+        <Button
+          color={colorOption}
+          mode="outlined"
+          label={`Color: ${colorOption}`}
+          clickable
+        />
+      ))}
+    </div>
+  );
+}
+allOutlinedColorSchemes.parameters = {
+  docs: {
+    description: {
+      story: `Exemplos com todos as cores de botões outlined disponíveis
       `
     }
   },
